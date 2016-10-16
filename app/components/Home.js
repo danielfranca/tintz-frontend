@@ -4,9 +4,9 @@ function Home(props) {
     return (
         <div>
             <div className="ui container">
-                <h2 className="ui header center aligned" style={{marginTop: '5px', color: "#2E9AFE"}}>
-                    <div className="content">
-                        Tintz
+                <h2 className="ui left aligned" style={{marginTop: '5px'}}>
+                    <div className="ui small image">
+                        <img src="/images/logo.png" />
                     </div>
                 </h2>
             </div>
