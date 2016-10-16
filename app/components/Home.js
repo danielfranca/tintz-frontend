@@ -4,11 +4,22 @@ function Home(props) {
     return (
         <div>
             <div className="ui container">
-                <h2 className="ui left aligned" style={{marginTop: '5px'}}>
+                <div className="ui centered grid" style={{marginTop: '5px'}}>
                     <div className="ui small image">
                         <img src="/images/logo.png" />
                     </div>
-                </h2>
+                    <div className="row" style={{marginTop: '30px'}}>
+                        <div className="ui form">
+                          <div className="field">
+                            <label>Let me know first about Tintz</label>
+                            <input type="email" placeholder="Enter your email" />
+                          </div>
+                          <div className="row">
+                            <div className="ui submit button right floated">Submit</div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );
