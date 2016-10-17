@@ -1,10 +1,11 @@
 import React from 'react';
+import About from '../components/About';
 
 function Home(props) {
     return (
         <div>
             <div className="ui container">
-                <div className="ui centered grid" style={{marginTop: '5px'}}>
+                <div className="ui centered grid" style={{marginTop: '10px'}}>
                     <div className="ui small image">
                         <img src="/images/logo.png" />
                     </div>
@@ -14,10 +15,11 @@ function Home(props) {
                             <label>Let me know first about Tintz</label>
                             <input type="email" placeholder="Enter your email" />
                           </div>
-                          <div className="row">
-                            <div className="ui submit button right floated">Submit</div>
-                          </div>
+                          <div className="ui submit button right floated" style={{marginTop: "-10px"}}>Subscribe</div>
                         </div>
+                    </div>
+                    <div className="row">
+                        <About />
                     </div>
                 </div>
             </div>
