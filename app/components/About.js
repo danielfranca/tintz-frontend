@@ -13,7 +13,7 @@ export default function About(props) {
       </div>
     </div>
   <div className="extra content">
-    <button className="ui button">Answer survey</button>
+    <button className="ui button" onClick={props.onClickSurveyHandler}>Answer survey</button>
   </div>
 </div>
 }
