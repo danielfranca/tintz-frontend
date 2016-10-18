@@ -6,6 +6,9 @@ class HomeContainer extends React.Component {
     onClickSurveyHandler(e) {
         console.log("onClickSurveyHandler...");
         $('.ui.modal')
+          .modal({
+              'onHidden': () => console.log("Closing modal...") }
+          )
           .modal('show')
         ;
     }
