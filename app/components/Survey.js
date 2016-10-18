@@ -1,62 +1,39 @@
 import React from 'react';
+import {Modal, Button, Form, Input, Dropdown} from 'semantic-ui-react';
+
+const options = [
+  { text: 'English', value: 'English' },
+  { text: 'French', value: 'French' },
+  { text: 'Spanish', value: 'Spanish' },
+  { text: 'German', value: 'German' },
+  { text: 'Chinese', value: 'Chinese' },
+]
 
 export default function Survey(props) {
     return (
-        <div className="ui modal" style={{padding: "20px"}}>
-        <form className="ui form">
-          <div className="field">
-            <label>Email</label>
-            <input type="email" name="email" placeholder="Email" />
-          </div>
-          <div className="field">
-              <label>Gender</label>
-              <select className="ui selection dropdown">
-                  <option value="M">Male</option>
-                  <option value="F">Female</option>
-              </select>
-          </div>
-        <div className="field">
-          <label>Country</label>
-          <select className="ui dropdown">
-            <option value="">Select Country</option>
-            <option value="AF">Afghanistan</option>
-            <option value="AX">Åland Islands</option>
-          </select>
-         </div>
-          <div className="inline fields">
-            <label htmlFor="fruit">Select your favorite fruit:</label>
-            <div className="field">
-              <div className="ui radio checkbox">
-                <input type="radio" name="fruit" tabIndex="0" />
-                <label>Apples</label>
-              </div>
-            </div>
-            <div className="field">
-              <div className="ui radio checkbox">
-                <input type="radio" name="fruit" tabIndex="0" />
-                <label>Oranges</label>
-              </div>
-            </div>
-            <div className="field">
-              <div className="ui radio checkbox">
-                <input type="radio" name="fruit" tabIndex="0" />
-                <label>Pears</label>
-              </div>
-            </div>
-            <div className="field">
-              <div className="ui radio checkbox">
-                <input type="radio" name="fruit" tabIndex="0" />
-                <label>Grapefruit</label>
-              </div>
-            </div>
-          </div>
-          <div className="field">
-            <div className="ui checkbox">
-                <input type="checkbox" tabIndex="0"/>
-                <label>I agree to the Terms and Conditions</label>
-            </div>
-          </div>
-          <button className="ui button" type="submit">Submit</button>
-        </form>
+        <div>
+        <Modal trigger={<Button>Answer Survey</Button>}>
+            <Modal.Header>Survey</Modal.Header>
+            <Modal.Content>
+                <Form>
+                    <Form.Field>
+                        <label>Regular Field</label>
+                        <Input />
+                    </Form.Field>
+                    <Form.Field>
+                        <label>Multiple Selection Field</label>
+                        <Dropdown
+                        options={options}
+                        placeholder="Choose Language"
+                        search
+                        selection
+                        fluid
+                        multiple
+                        >
+                        </Dropdown>
+                    </Form.Field>
+                </Form>
+            </Modal.Content>
+        </Modal>
         </div> );
 }
