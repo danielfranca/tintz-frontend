@@ -16,13 +16,16 @@ class HomeContainer extends React.Component {
 
     onClickSubscribeHandler(ev) {
         console.log(ev);
-        subscribeActions.subscribe();
+        let email = ev.target.form[0].value;
+        if (email.length > 0) {
+            subscribeActions.subscribe(email);
+        }
     }
 
     render() {
         return (
             <div>
-            <Home onClickSubscribeHandler={() => this.onClickSubscribeHandler()} />
+            <Home onClickSubscribeHandler={(ev) => this.onClickSubscribeHandler(ev)} />
             </div>
         );
     }
