@@ -20,11 +20,11 @@ export default function Home(props) {
                               <input placeholder='Email' />
                             </Input>
                         </Form.Field>
-                        <Button type='submit' floated='right'>Subscribe</Button>
+                        <Button onClick={props.onClickSubscribeHandler} type='submit' floated='right'>Subscribe</Button>
                     </Form>
                 </Grid.Row>
                 <Grid.Row>
-                    <About onClickSurveyHandler={props.onClickSurveyHandler} />
+                    <About />
                 </Grid.Row>
             </Grid>
         </div>
