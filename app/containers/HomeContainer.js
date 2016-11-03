@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Home from '../components/Home';
 import * as subscribeActions from '../store/subscription/actions';
+import { isSubscribed } from '../store/subscription/reducer';
 
 
 class HomeContainer extends React.Component {
@@ -18,14 +19,14 @@ class HomeContainer extends React.Component {
         console.log(ev);
         let email = ev.target.form[0].value;
         if (email.length > 0) {
-            subscribeActions.subscribe(email);
+            this.props.dispatch(subscribeActions.subscribe(email));
         }
     }
 
     render() {
         return (
             <div>
-            <Home onClickSubscribeHandler={(ev) => this.onClickSubscribeHandler(ev)} />
+            <Home onClickSubscribeHandler={(ev) => this.onClickSubscribeHandler(ev)} isSubscribed={this.state.isSubscribed} />
             </div>
         );
     }
@@ -39,9 +40,8 @@ function mapStateToProps(state) {
   return { isSubscribed: state.isSubscribed }
 }
 
-function mapDispatchToProps(dispatch) {
+/*function mapDispatchToProps(dispatch) {
   return { actions: bindActionCreators(subscribeActions, dispatch) }
-}
+}*/
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer);
+export default connect(mapStateToProps)(HomeContainer);

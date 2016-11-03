@@ -3,28 +3,35 @@
 // normally, our interface to any sort of server API will be as a service
 import axios from 'axios';
 
-const SUBSCRIBE_ENDPOINT = 'https://localhost:8000';
+const SUBSCRIBE_ENDPOINT = 'http://localhost:8000';
 
 
 class SubscriptionService {
 
-  subscribe() {
-    const url = `${SUBSCRIBE_ENDPOINT}/api/subscription/subscribe`;
+  async subscribe(email) {
+    console.log("SubscriptionService:subscribe - begin");
+    const url = `${SUBSCRIBE_ENDPOINT}/api/v1/email/subscribers/`;
     var isSubscribed = false;
+    console.log("SubscriptionService:subscribe - fetching url");
     const response = await fetch(url, {
       method: 'POST',
-      data: {
+      body: JSON.stringify({
           email: email
-      },
+      }),
       headers: {
-        Accept: 'application/json'
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
       }
     });
 
+    console.log("SubscriptionService:subscribe - got a reply");
+
     if (!response.ok) {
+      console.log("SubscriptionService:subscribe - it's an error", response.status);
       throw new Error(`Subscribe failed, HTTP status ${response.status}`);
-    }    
+    }
     isSubscribed = true;
+    console.log("SubscriptionService:subscribe - it's not an error", response.status);
 
     return isSubscribed;
   }

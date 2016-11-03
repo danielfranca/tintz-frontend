@@ -1,10 +1,13 @@
 import React from 'react';
 import About from '../components/About';
-import {Grid, Image, Form, Button, Icon, Input} from 'semantic-ui-react';
+import {Grid, Image, Form, Button, Icon, Input, Message} from 'semantic-ui-react';
+var PropTypes = React.PropTypes;
 
-export default function Home(props) {
+
+function Home(props) {
     return (
         <div>
+        <Message><Message.Content>Subscribed: {props.isSubscribed}</Message.Content></Message>
             <Grid centered columns={1}>
                 <Grid.Row>
                     <Grid.Column>
@@ -27,6 +30,13 @@ export default function Home(props) {
                     <About />
                 </Grid.Row>
             </Grid>
+
         </div>
     );
 }
+
+Home.propTypes = {
+  isSubscribed: PropTypes.bool.isRequired
+}
+
+export default Home;
