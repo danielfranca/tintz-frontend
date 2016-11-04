@@ -7,35 +7,32 @@ const SUBSCRIBE_ENDPOINT = 'http://localhost:8000';
 
 
 class SubscriptionService {
+    async subscribe(email) {
+        console.log("SubscriptionService:subscribe - begin");
+        const url = `${SUBSCRIBE_ENDPOINT}/api/v1/email/subscribers/`;
+        var isSubscribed = false;
+        console.log("SubscriptionService:subscribe - fetching url");
+        const response = await fetch(url, {
+          method: 'POST',
+          body: JSON.stringify({
+              email: email
+          }),
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+          }
+        });
 
-  async subscribe(email) {
-    console.log("SubscriptionService:subscribe - begin");
-    const url = `${SUBSCRIBE_ENDPOINT}/api/v1/email/subscribers/`;
-    var isSubscribed = false;
-    console.log("SubscriptionService:subscribe - fetching url");
-    const response = await fetch(url, {
-      method: 'POST',
-      body: JSON.stringify({
-          email: email
-      }),
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      }
-    });
+        console.log("SubscriptionService:subscribe - got a reply");
 
-    console.log("SubscriptionService:subscribe - got a reply");
-
-    if (!response.ok) {
-      console.log("SubscriptionService:subscribe - it's an error", response.status);
-      throw new Error(`Subscribe failed, HTTP status ${response.status}`);
+        if (!response.ok) {
+          console.log("SubscriptionService:subscribe - it's an error", response.status);
+          return [false, response];
+        } else {
+            console.log("SubscriptionService:subscribe - it's not an error", response.status);
+            return [true, response];
+        }
     }
-    isSubscribed = true;
-    console.log("SubscriptionService:subscribe - it's not an error", response.status);
-
-    return isSubscribed;
-  }
-
 }
 
 export default new SubscriptionService();

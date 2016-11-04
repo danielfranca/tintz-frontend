@@ -5,9 +5,15 @@ var PropTypes = React.PropTypes;
 
 
 function Home(props) {
+    console.log(props);
+    let msg = props.message + ": " + ((props.isSubscribed)?"Yes":"No");
     return (
         <div>
-        <Message><Message.Content>Subscribed: {props.isSubscribed}</Message.Content></Message>
+            <Message>
+                <Message.Content>
+                    Subscribed: {msg}
+                </Message.Content>
+            </Message>
             <Grid centered columns={1}>
                 <Grid.Row>
                     <Grid.Column>
