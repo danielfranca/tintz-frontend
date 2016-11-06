@@ -9,7 +9,7 @@ export function subscribe(email) {
     try {
       console.log("actions subscribe - call service for subscribe");
       let [subscribed, response] = await subscriptionService.subscribe(email);
-      let text = await response.text();
+      let text = await response.json();
       if (subscribed) {
           console.log("actions subscribe - subscribed, dispatching action");
           dispatch({
@@ -17,7 +17,7 @@ export function subscribe(email) {
               email: email,
               response: {
                   status: response.status,
-                  message: text
+                  message: (text.email)?"Email " + text.email + " succesfull subscribed.":"succesfull subscribed"
               }
           });
       } else {
@@ -27,7 +27,7 @@ export function subscribe(email) {
               email: email,
               response: {
                   status: response.status,
-                  message: text
+                  message: (text.email && text.email.length && text.email[0]) || "Unknown error"
               }
           });
       }
@@ -36,4 +36,13 @@ export function subscribe(email) {
       console.error(error);
     }
 };
+}
+
+export function closeMessage() {
+  return async(dispatch, getState) => {
+    console.log("actions close - begin");
+    dispatch({
+              type: types.SUBSCRIPTION_MESSAGE_CLOSED
+          });
+    };
 }

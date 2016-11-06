@@ -9,19 +9,17 @@ import * as SubscriptionSelectors from '../store/subscription/reducer';
 
 class HomeContainer extends React.Component {
 
-    constructor() {
-        super();
-        this.state = {
-            isSubscribed: false
-        };
-    }
-
     onClickSubscribeHandler(ev) {
         console.log(ev);
         let email = ev.target.form[0].value;
         if (email.length > 0) {
             this.props.dispatch(subscribeActions.subscribe(email));
         }
+    }
+
+    onClickCloseMessage(ev) {
+        console.log("Closing message...", ev);
+        this.props.dispatch(subscribeActions.closeMessage());
     }
 
     render() {
@@ -32,6 +30,8 @@ class HomeContainer extends React.Component {
                 onClickSubscribeHandler={(ev) => this.onClickSubscribeHandler(ev)}
                 isSubscribed={this.props.isSubscribed}
                 message={this.props.message}
+                isShowingMessage={this.props.isShowingMessage}
+                onClickCloseMessage={(ev) => this.onClickCloseMessage(ev)}
                 />
             </div>
         );
@@ -46,6 +46,7 @@ function mapStateToProps(state) {
   return {
       isSubscribed: SubscriptionSelectors.isSubscribed(state),
       message: SubscriptionSelectors.Message(state),
+      isShowingMessage: SubscriptionSelectors.IsShowingMessage(state),
       statusCode: SubscriptionSelectors.StatusCode(state)
   }
 }

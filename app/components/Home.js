@@ -1,17 +1,17 @@
 import React from 'react';
 import About from '../components/About';
-import {Grid, Image, Form, Button, Icon, Input, Message} from 'semantic-ui-react';
+import {Grid, Image, Form, Button, Icon, Input, Message, Modal, Header} from 'semantic-ui-react';
 var PropTypes = React.PropTypes;
 
 
 function Home(props) {
     console.log(props);
-    let msg = props.message + ": " + ((props.isSubscribed)?"Yes":"No");
+    let displayStyle = (props.isShowingMessage)?"block":"none";
     return (
         <div>
-            <Message>
+            <Message onClick={props.onClickCloseMessage} style={{display: displayStyle}}>
                 <Message.Content>
-                    Subscribed: {msg}
+                    {props.message}
                 </Message.Content>
             </Message>
             <Grid centered columns={1}>
