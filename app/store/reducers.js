@@ -1,4 +1,4 @@
-import subscription from './subscription/reducer';
+import subscription from './newsletter/reducer';
 
 export {
   subscription

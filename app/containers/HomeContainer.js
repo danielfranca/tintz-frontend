@@ -2,8 +2,8 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Home from '../components/Home';
-import * as subscribeActions from '../store/subscription/actions';
-import * as SubscriptionSelectors from '../store/subscription/reducer';
+import * as subscribeActions from '../store/newsletter/actions';
+import * as SubscriptionSelectors from '../store/newsletter/reducer';
 
 
 

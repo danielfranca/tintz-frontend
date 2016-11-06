@@ -9,7 +9,7 @@ const SUBSCRIBE_ENDPOINT = 'http://localhost:8000';
 class SubscriptionService {
     async subscribe(email) {
         console.log("SubscriptionService:subscribe - begin");
-        const url = `${SUBSCRIBE_ENDPOINT}/api/v1/email/subscribers/`;
+        const url = `${SUBSCRIBE_ENDPOINT}/api/v1/newsletter/subscribers/`;
         var isSubscribed = false;
         console.log("SubscriptionService:subscribe - fetching url");
         const response = await fetch(url, {

@@ -13,7 +13,7 @@ export function subscribe(email) {
       if (subscribed) {
           console.log("actions subscribe - subscribed, dispatching action");
           dispatch({
-              type: types.SUBSCRIPTION_SUBSCRIBED,
+              type: types.NEWSLETTER_SUBSCRIBE_SUCCESS,
               email: email,
               response: {
                   status: response.status,
@@ -23,7 +23,7 @@ export function subscribe(email) {
       } else {
           console.log("actions subscribe - NOT subscribed");
           dispatch({
-              type: types.SUBSCRIPTION_FAILED,
+              type: types.NEWSLETTER_SUBSCRIBE_FAIL,
               email: email,
               response: {
                   status: response.status,
@@ -42,7 +42,7 @@ export function closeMessage() {
   return async(dispatch, getState) => {
     console.log("actions close - begin");
     dispatch({
-              type: types.SUBSCRIPTION_MESSAGE_CLOSED
+              type: types.NEWSLETTER_MESSAGE_CLOSED
           });
     };
 }

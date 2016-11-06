@@ -9,7 +9,7 @@ const initialState = {
 export default function reduce(state = initialState, action = {}) {
     console.log("subscription reducer - begin");
     switch (action.type) {
-        case types.SUBSCRIPTION_SUBSCRIBED:
+        case types.NEWSLETTER_SUBSCRIBE_SUCCESS:
             console.log("subscription reducer - types.SUBSCRIPTION_SUBSCRIBED: ", action);
             return {
                 ...state,
@@ -17,7 +17,7 @@ export default function reduce(state = initialState, action = {}) {
                 email: action.email,
                 response: action.response
             };
-        case types.SUBSCRIPTION_FAILED:
+        case types.NEWSLETTER_SUBSCRIBE_FAIL:
             console.log("subscription reducer - types.SUBSCRIPTION_FAILED: ", action);
             return {
                 ...state,
@@ -25,7 +25,7 @@ export default function reduce(state = initialState, action = {}) {
                 email: action.email,
                 response: action.response
             };
-        case types.SUBSCRIPTION_MESSAGE_CLOSED:
+        case types.NEWSLETTER_MESSAGE_CLOSED:
             console.log("subscription reducer - types.SUBSCRIPTION_MESSAGE_CLOSED: ", action);
             return {
                 ...state,
